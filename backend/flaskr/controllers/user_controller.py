@@ -48,6 +48,15 @@ class UserController:
 
             db.session.add(new_user)
             db.session.commit()
+
+            return jsonify({
+                "message": "Account created successfully",
+                "user": {
+                    "username": new_user.username,
+                    "email": new_user.email
+                }
+            }), 201
+        
         except SQLAlchemyError:
             db.session.rollback()
             abort(500, message="Internal server error while creating user")

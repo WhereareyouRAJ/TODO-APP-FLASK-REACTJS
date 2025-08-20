@@ -1,0 +1,58 @@
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: todo-backend
+  namespace: todo-dev
+  labels: 
+    tier: backend 
+    app: todo-app
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      tier: backend
+      app: todo-app
+  template: 
+    metadata: 
+      labels: 
+        tier: backend
+        app: todo-app
+    spec: 
+      restartPolicy: Always
+      containers: 
+        - name: backend
+          image: "rajsingh8826/python-backend:latest"
+          imagePullPolicy:  IfNotPresent
+          ports: 
+            - containerPort: 5000
+          volumeMounts:
+            - mountPath: /app/data
+              name: sqlite-storage
+      volumes:
+        - name: sqlite-storage
+          persistentVolumeClaim:
+            claimName: sqlite-pvc  
+
+
+
+---
+
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: todo-backend-svc
+  namespace: todo-dev
+  labels: 
+    tier: backend
+    app: todo-app
+spec: 
+  type: ClusterIP
+  selector: 
+    tier: backend
+    app: todo-app
+  ports: 
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP

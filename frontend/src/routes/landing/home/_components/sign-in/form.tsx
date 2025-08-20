@@ -33,10 +33,9 @@ export const SignInForm = () => {
 
   const onSubmit = async (formData: TSignInFormSchema) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/sign-in",
-        formData,
-      );
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await axios.post(`${API_URL}/auth/sign-in`, formData);
+      
 
       const token: string = response.data.token;
 

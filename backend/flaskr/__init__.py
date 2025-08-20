@@ -23,8 +23,14 @@ def create_app(test_config=None):
     migrate.init_app(app, db)
     api.init_app(app)
     cors.init_app(app)
+    
+    cors.init_app(
+        app,
+        resources={r"/api/*": {"origins": "*"}},
+        supports_credentials=True,
+    )
     jwt.init_app(app)
-
+    
     api.register_blueprint(auth_route, url_prefix="/api/v1")
     api.register_blueprint(user_route, url_prefix="/api/v1")
     api.register_blueprint(tag_route, url_prefix="/api/v1")

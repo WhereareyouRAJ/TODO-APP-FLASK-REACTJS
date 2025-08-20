@@ -33,7 +33,8 @@ export const CreateAccountForm = () => {
 
   const onSubmit = async (formData: TCreateAccountFormSchema) => {
     try {
-      await axios.post("http://localhost:5000/api/v1/users", formData);
+      const API_URL = import.meta.env.VITE_API_URL;
+      await axios.post(`${API_URL}/users`, formData);
 
       toast.success("Acount successfully created");
 

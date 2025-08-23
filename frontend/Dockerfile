@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory 
 # This allows Docker to cache the npm install step
-COPY package*.json ./
+COPY ./frontend/package*.json ./
 
 # Install dependencies
 # This will only run if package.json or package-lock.json changes

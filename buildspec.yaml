@@ -7,6 +7,7 @@ env:
     REPO_NAME="rajsingh8826/react-frontend"
     IMAGE_TAG="latest"
     REPO_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}"
+    IMAGE_NAME="react-frontend"
 
 phases:
   pre_build:

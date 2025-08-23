@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory 
 # This allows Docker to cache the npm install step
-COPY ./frontend/package*.json ./
+COPY ./package*.json ./
 
 # Install dependencies
 # This will only run if package.json or package-lock.json changes
@@ -29,7 +29,7 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the Nginx configuration file
 # This file should be configured to serve the static files from the dist directory
-COPY ./frontend/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the built application files from the builder stage to the Nginx html directory
 # This allows Nginx to serve the static files

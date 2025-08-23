@@ -29,7 +29,7 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the Nginx configuration file
 # This file should be configured to serve the static files from the dist directory
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the built application files from the builder stage to the Nginx html directory
 # This allows Nginx to serve the static files

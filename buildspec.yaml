@@ -19,7 +19,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $IMAGE_NAME -f ./frontend/Dockerfile 
+      - cd ./frontend/ 
+      - docker build -t $IMAGE_NAME -f .       
       - docker tag $IMAGE_NAME:latest $REPO_URI:latest
   post_build:
     commands:

@@ -25,15 +25,19 @@ spec:
         app: todo-app
     spec: 
       restartPolicy: Always
+      
       containers:
         - name: frontend
-          image: "rajsingh8826/react-frontend:v1"
+          image: "636750014592.dkr.ecr.ap-south-1.amazonaws.com/rajsingh8826/react-frontend:latest"
           imagePullPolicy: Always
+
           ports:
             - containerPort: 80
           env:
             - name: VITE_API_URL
               value: "http://todo-backend-svc:5000"
+      imagePullSecrets:
+        - name: ecr-secret     
       volumes:
         - name: nginx-config
           configMap:

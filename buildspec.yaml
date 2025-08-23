@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    AWS_REGION: ap-south-1
+    AWS_REGION: ap-southeast-1
     AWS_ACCOUNT_ID: 636750014592
     REPO_NAME: rajsingh8826/react-frontend
     IMAGE_TAG: latest
